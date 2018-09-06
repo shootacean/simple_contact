@@ -7,6 +7,11 @@ defmodule SimpleContact.ContactController do
     render conn, "index.html", changeset: changeset
   end
 
+  def new(conn, _params) do
+    changeset = Contact.changeset(%Contact{ })
+    render conn, "index.html", changeset: changeset
+  end
+
   def create(conn, %{ "contact" => contact_params }) do
     changeset = Contact.changeset(%Contact{ }, contact_params)
     case Repo.insert(changeset) do

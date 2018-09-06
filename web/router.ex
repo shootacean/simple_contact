@@ -2,7 +2,7 @@ defmodule SimpleContact.Router do
   use SimpleContact.Web, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, [ "html" ]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
@@ -10,14 +10,14 @@ defmodule SimpleContact.Router do
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug :accepts, [ "json" ]
   end
 
   scope "/", SimpleContact do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/contact", ContactController, only: [:index, :create]
+    resources "/contact", ContactController, only: [ :index, :new, :create ]
   end
 
   # Other scopes may use custom stacks.

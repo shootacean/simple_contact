@@ -9,7 +9,7 @@ defmodule SimpleContact.ContactController do
 
   def new(conn, _params) do
     changeset = Contact.changeset(%Contact{ })
-    render conn, "index.html", changeset: changeset
+    render conn, "new.html", changeset: changeset
   end
 
   def create(conn, %{ "contact" => contact_params }) do

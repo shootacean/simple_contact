@@ -3,8 +3,8 @@ defmodule SimpleContact.ContactController do
   alias SimpleContact.Contact
 
   def index(conn, _params) do
-    changeset = Contact.changeset(%Contact{ })
-    render conn, "index.html", changeset: changeset
+    contacts = Contact |> Repo.all
+    render conn, "index.html", contacts: contacts
   end
 
   def new(conn, _params) do

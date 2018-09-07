@@ -1,20 +1,19 @@
 <div>
   <h2>Simple Contact</h2>
-  <%= form_for @changeset, contact_path(@conn, :create), fn f -> %>
-    <div class="uk-margin">
-      <label class="uk-form-label">件名</label>
-      <div class="uk-form-controls">
-        <%= text_input f, :subject, class: "uk-input" %>
-        <%= error_tag f, :subject %>
-      </div>
-    </div>
-    <div class="uk-margin">
-      <label class="uk-form-label">本文</label>
-      <div class="uk-form-controls">
-        <%= textarea f, :contents, class: "uk-textarea" %>
-        <%= error_tag f, :contents %>
-      </div>
-    </div>
-    <%= submit "お問い合わせする", class: "uk-button-primary" %>
-  <% end %>
+  <table class="uk-table uk-table-small uk-table-striped">
+    <thead>
+      <tr>
+        <th class="uk-width-small">件名</th>
+        <th class="uk-table-expand">本文</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%= for contact <- @contacts do %>
+      <tr>
+        <td><%= contact.subject %></td>
+        <td><%= contact.contents %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>
